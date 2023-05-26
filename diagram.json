@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Anderson Costa",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-franzininho-wifi",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -88.01,
+      "left": -7.83,
+      "attrs": { "temperature": "15.9", "humidity": "54.5" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -17.47,
+      "left": -57.66,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 10, "left": -185, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -89.64,
+      "left": -52.94,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "esp:GND.1", "led1:C", "black", [ "h0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "r1:1", "led1:A", "green", [ "h0" ] ],
+    [ "dht1:SDA", "esp:11", "green", [ "v0" ] ],
+    [ "esp:3V3.1", "relay1:VCC", "red", [ "v-0.25", "h-294.76", "v-95.65" ] ],
+    [ "esp:15", "relay1:IN", "green", [ "h-271.88", "v-29.82" ] ],
+    [ "relay1:NO", "r1:2", "green", [ "h0" ] ],
+    [ "esp:GND.1", "relay1:GND", "black", [ "h-284.08", "v-95.16" ] ],
+    [ "dht1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "esp:3V3.1", "relay1:COM", "red", [ "v-0.25", "h-124.7", "v-83.12" ] ]
+  ],
+  "dependencies": {}
+}
